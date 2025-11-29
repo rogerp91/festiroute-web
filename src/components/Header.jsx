@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslations, useLocale } from '@/lib/i18n';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
     const t = useTranslations();
@@ -21,9 +23,22 @@ const Header = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
+
     const changeLanguage = (lng) => {
         router.push(`/${lng}`);
         setIsLangDropdownOpen(false);
+        setIsMobileMenuOpen(false);
     };
 
     const currentLang = locale;
@@ -57,11 +72,13 @@ const Header = () => {
         <header className={`sticky top-0 z-50 flex items-center justify-center border-b border-solid border-b-medium-dark bg-dark/80 px-4 py-3 backdrop-blur-custom transition-all duration-300 ${isScrolled ? 'scrolled' : ''}`}>
             <div className="flex w-full max-w-7xl items-center justify-between">
                 <div className="flex items-center gap-2">
-                    <span className="text-xl font-bold tracking-tight text-light">FestiRoute</span>
+                    <Link href="/" className="text-xl font-bold tracking-tight text-light no-underline hover:text-primary transition-colors">
+                        FestiRoute
+                    </Link>
                 </div>
                 <nav className="hidden items-center gap-8 md:flex">
                     <button onClick={(e) => handleNavClick(e, 'funcionalidades')} className="text-sm font-semibold leading-normal text-light hover:text-primary transition-colors cursor-pointer bg-transparent border-none">{t('nav.features')}</button>
-                    <button onClick={(e) => handleNavClick(e, 'dazzy-ia')} className="text-sm font-semibold leading-normal text-light hover:text-primary transition-colors cursor-pointer bg-transparent border-none">{t('nav.dazzy')}</button>
+                    <a href="https://dazzyia.com/" target="_blank" rel="noopener noreferrer" className="text-sm font-semibold leading-normal text-light hover:text-primary transition-colors cursor-pointer no-underline">{t('nav.dazzy')}</a>
                     <button onClick={(e) => handleNavClick(e, 'para-quem-e')} className="text-sm font-semibold leading-normal text-light hover:text-primary transition-colors cursor-pointer bg-transparent border-none">{t('nav.who_is_it_for')}</button>
                 </nav>
                 <div className="flex items-center gap-2">
@@ -104,36 +121,133 @@ const Header = () => {
                 </div>
             </div>
 
-            {isMobileMenuOpen && (
-                <div id="mobile-menu" className="mobile-menu fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-dark/95 backdrop-blur-lg border-l border-medium-dark md:hidden">
-                    <div className="flex flex-col h-full">
-                        <div className="flex items-center justify-between p-4 border-b border-medium-dark">
-                            <span className="text-lg font-bold text-light">Menu</span>
-                            <button
-                                id="mobile-menu-close"
-                                className="flex h-10 w-10 items-center justify-center rounded-lg border border-medium-dark bg-dark text-light hover:bg-medium-dark transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                <span className="material-symbols-outlined">close</span>
-                            </button>
-                        </div>
-                        <nav className="flex flex-col gap-2 p-4">
-                            <button className="text-lg font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 text-left" onClick={(e) => handleNavClick(e, 'funcionalidades')}>{t('nav.features')}</button>
-                            <button className="text-lg font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 text-left" onClick={(e) => handleNavClick(e, 'dazzy-ia')}>{t('nav.dazzy')}</button>
-                            <button className="text-lg font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 text-left" onClick={(e) => handleNavClick(e, 'para-quem-e')}>{t('nav.who_is_it_for')}</button>
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="fixed inset-0 bg-black/70 backdrop-blur-sm md:hidden"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            style={{
+                                position: 'fixed',
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                bottom: 0,
+                                zIndex: 9998,
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden'
+                            }}
+                        />
 
-                            <div className="mt-4 border-t border-medium-dark pt-4">
-                                <p className="text-sm text-secondary-text mb-2 px-4">Idioma</p>
-                                <div className="flex gap-2 px-4">
-                                    <button onClick={() => changeLanguage('es')} className={`p-2 rounded ${currentLang === 'es' ? 'bg-primary text-dark' : 'bg-medium-dark text-light'}`}>ES</button>
-                                    <button onClick={() => changeLanguage('en')} className={`p-2 rounded ${currentLang === 'en' ? 'bg-primary text-dark' : 'bg-medium-dark text-light'}`}>EN</button>
-                                    <button onClick={() => changeLanguage('pt')} className={`p-2 rounded ${currentLang === 'pt' ? 'bg-primary text-dark' : 'bg-medium-dark text-light'}`}>PT</button>
+                        {/* Menu */}
+                        <motion.div
+                            id="mobile-menu"
+                            initial={{ x: '100%' }}
+                            animate={{ x: 0 }}
+                            exit={{ x: '100%' }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                            className="fixed top-0 right-0 bottom-0 w-full max-w-[280px] bg-dark/95 backdrop-blur-xl border-l border-medium-dark md:hidden shadow-2xl"
+                            style={{
+                                position: 'fixed',
+                                height: '100vh',
+                                height: '100dvh',
+                                maxHeight: '-webkit-fill-available',
+                                zIndex: 9999,
+                                WebkitOverflowScrolling: 'touch',
+                                WebkitBackfaceVisibility: 'hidden',
+                                backfaceVisibility: 'hidden',
+                                paddingTop: 'env(safe-area-inset-top)',
+                                paddingBottom: 'env(safe-area-inset-bottom)',
+                                paddingRight: 'env(safe-area-inset-right)'
+                            }}
+                        >
+                            <div className="flex flex-col h-full">
+                                {/* Header */}
+                                <div className="flex items-center justify-between p-4 border-b border-medium-dark flex-shrink-0">
+                                    <span className="text-lg font-bold text-light">Menu</span>
+                                    <button
+                                        id="mobile-menu-close"
+                                        className="flex h-10 w-10 items-center justify-center rounded-lg border border-medium-dark bg-medium-dark/50 text-light hover:bg-medium-dark transition-colors active:scale-95"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                    >
+                                        <span className="material-symbols-outlined">close</span>
+                                    </button>
                                 </div>
+
+                                {/* Scrollable Content */}
+                                <nav
+                                    className="flex-1 overflow-y-auto overflow-x-hidden p-4"
+                                    style={{
+                                        WebkitOverflowScrolling: 'touch',
+                                        overscrollBehavior: 'contain'
+                                    }}
+                                >
+                                    <div className="flex flex-col gap-2">
+                                        <button
+                                            className="text-base font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 active:bg-medium-dark text-left w-full"
+                                            onClick={(e) => handleNavClick(e, 'funcionalidades')}
+                                        >
+                                            {t('nav.features')}
+                                        </button>
+                                        <a
+                                            href="https://dazzyia.com/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-base font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 active:bg-medium-dark text-left no-underline block"
+                                        >
+                                            {t('nav.dazzy')}
+                                        </a>
+                                        <button
+                                            className="text-base font-semibold text-light hover:text-primary transition-colors py-3 px-4 rounded-lg hover:bg-medium-dark/50 active:bg-medium-dark text-left w-full"
+                                            onClick={(e) => handleNavClick(e, 'para-quem-e')}
+                                        >
+                                            {t('nav.who_is_it_for')}
+                                        </button>
+
+                                        {/* Language Section */}
+                                        <div className="mt-6 pt-4 border-t border-medium-dark">
+                                            <p className="text-xs uppercase tracking-wider text-secondary-text/70 mb-3 px-2 font-semibold">
+                                                {currentLang === 'es' ? 'Idioma' : currentLang === 'en' ? 'Language' : 'Idioma'}
+                                            </p>
+                                            <div className="flex flex-col gap-2">
+                                                <button
+                                                    onClick={() => changeLanguage('es')}
+                                                    className={`flex items-center gap-3 p-3 rounded-lg transition-all active:scale-98 ${currentLang === 'es' ? 'bg-primary/20 text-primary border border-primary/30' : 'hover:bg-medium-dark/50 active:bg-medium-dark text-light border border-transparent'}`}
+                                                >
+                                                    <img src="https://flagcdn.com/w40/es.png" alt="Español" className="h-5 w-5 rounded-full object-cover flex-shrink-0" />
+                                                    <span className="font-medium">Español</span>
+                                                    {currentLang === 'es' && <span className="material-symbols-outlined ml-auto text-base">check</span>}
+                                                </button>
+                                                <button
+                                                    onClick={() => changeLanguage('en')}
+                                                    className={`flex items-center gap-3 p-3 rounded-lg transition-all active:scale-98 ${currentLang === 'en' ? 'bg-primary/20 text-primary border border-primary/30' : 'hover:bg-medium-dark/50 active:bg-medium-dark text-light border border-transparent'}`}
+                                                >
+                                                    <img src="https://flagcdn.com/w40/us.png" alt="English" className="h-5 w-5 rounded-full object-cover flex-shrink-0" />
+                                                    <span className="font-medium">English</span>
+                                                    {currentLang === 'en' && <span className="material-symbols-outlined ml-auto text-base">check</span>}
+                                                </button>
+                                                <button
+                                                    onClick={() => changeLanguage('pt')}
+                                                    className={`flex items-center gap-3 p-3 rounded-lg transition-all active:scale-98 ${currentLang === 'pt' ? 'bg-primary/20 text-primary border border-primary/30' : 'hover:bg-medium-dark/50 active:bg-medium-dark text-light border border-transparent'}`}
+                                                >
+                                                    <img src="https://flagcdn.com/w40/br.png" alt="Português" className="h-5 w-5 rounded-full object-cover flex-shrink-0" />
+                                                    <span className="font-medium">Português</span>
+                                                    {currentLang === 'pt' && <span className="material-symbols-outlined ml-auto text-base">check</span>}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nav>
                             </div>
-                        </nav>
-                    </div>
-                </div>
-            )}
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </header>
     );
 };

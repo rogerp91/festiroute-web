@@ -61,7 +61,7 @@ const DazzyAI = () => {
                     <span className="material-symbols-outlined text-primary text-4xl">auto_awesome</span>
                 </div>
                 <h2 className="text-4xl font-bold leading-tight tracking-tight text-light md:text-5xl">
-                    {t('dazzy.title_prefix')} <span className="gradient-text">{t('dazzy.title_highlight')}</span>
+                    {t('dazzy.title_prefix')} <a href="https://dazzyia.com/" target="_blank" rel="noopener noreferrer" className="gradient-text hover:opacity-80 transition-opacity no-underline">{t('dazzy.title_highlight')}</a>
                 </h2>
                 <p className="max-w-3xl text-lg font-medium text-secondary-text">
                     {t('dazzy.subtitle')}

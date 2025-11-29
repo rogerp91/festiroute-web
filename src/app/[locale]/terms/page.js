@@ -1,11 +1,12 @@
 'use client';
 
-import { useTranslations } from '@/lib/i18n';
+import { useTranslations, useLocale } from '@/lib/i18n';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function TermsPage() {
     const t = useTranslations();
+    const locale = useLocale();
 
     return (
         <div className="min-h-screen w-full flex flex-col items-center justify-center py-20 px-4 sm:px-6 relative overflow-hidden">
@@ -64,7 +65,7 @@ export default function TermsPage() {
 
                 {/* Back Button */}
                 <div className="text-center">
-                    <Link href="/" className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-primary border border-primary/30 rounded-full hover:bg-primary/10 transition-all duration-300 group">
+                    <Link href={`/${locale}`} className="inline-flex items-center justify-center px-8 py-3 text-sm font-medium text-primary border border-primary/30 rounded-full hover:bg-primary/10 transition-all duration-300 group">
                         <span className="mr-2 group-hover:-translate-x-1 transition-transform">←</span> {t('terms_page.back_home')}
                     </Link>
                 </div>

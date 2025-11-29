@@ -1,10 +1,11 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import { useTranslations } from '@/lib/i18n';
+import { useTranslations, useLocale } from '@/lib/i18n';
 
 const Footer = () => {
   const t = useTranslations();
+  const locale = useLocale();
 
   return (
     <footer className="mt-16 border-t border-medium-dark/40 px-6 py-8">
@@ -32,11 +33,11 @@ const Footer = () => {
 
         {/* Links Section */}
         <div className="flex items-center justify-center gap-6 border-t border-medium-dark/30 pt-4 md:justify-start">
-          <Link className="text-sm font-semibold text-light hover:text-primary transition-colors" href="/terms">
+          <Link className="text-sm font-semibold text-light hover:text-primary transition-colors" href={`/${locale}/terms`}>
             {t('footer.terms')}
           </Link>
           <span className="text-secondary-text/40">·</span>
-          <Link className="text-sm font-semibold text-light hover:text-primary transition-colors" href="/privacy">
+          <Link className="text-sm font-semibold text-light hover:text-primary transition-colors" href={`/${locale}/privacy`}>
             {t('footer.privacy')}
           </Link>
         </div>

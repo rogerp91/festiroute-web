@@ -1,0 +1,114 @@
+import { I18nProvider } from '@/lib/i18n';
+import Script from 'next/script';
+import '../globals.css';
+
+export const metadata = {
+    title: 'FestiRoute - Tu copiloto inteligente para festivales',
+    description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real y todo lo que necesitas en un solo lugar.',
+    keywords: 'festivales, música electrónica, rutas, IA, Dazzy, planificación, eventos, conciertos, festival guide',
+
+    // Icons and Favicons
+    icons: {
+        icon: [
+            { url: '/favicon.ico' },
+            { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+            { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+            { url: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' },
+        ],
+        apple: [
+            { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+        ],
+    },
+
+    // Manifest
+    manifest: '/site.webmanifest',
+
+    // Theme Color
+    themeColor: [
+        { media: '(prefers-color-scheme: dark)', color: '#0a0e27' },
+        { media: '(prefers-color-scheme: light)', color: '#00ff88' },
+    ],
+
+    // Open Graph (Facebook, LinkedIn, etc.)
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        alternateLocale: ['es_ES', 'pt_BR'],
+        url: 'https://festiroute.com',
+        siteName: 'FestiRoute',
+        title: 'FestiRoute - Tu copiloto inteligente para festivales',
+        description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real y todo lo que necesitas en un solo lugar.',
+        images: [
+            {
+                url: '/favicon-512x512.png',
+                width: 512,
+                height: 512,
+                alt: 'FestiRoute Logo',
+            },
+        ],
+    },
+
+    // Twitter Card
+    twitter: {
+        card: 'summary_large_image',
+        title: 'FestiRoute - Tu copiloto inteligente para festivales',
+        description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real.',
+        images: ['/favicon-512x512.png'],
+        creator: '@festiroute',
+        site: '@festiroute',
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
+    },
+};
+
+export default function RootLayout({ children }) {
+    const locale = 'en';
+
+    return (
+        <html lang={locale} className="dark">
+            <head>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+                    rel="stylesheet"
+                />
+            </head>
+            <body className="antialiased">
+                <noscript>
+                    <iframe
+                        src="https://www.googletagmanager.com/ns.html?id=GTM-TD4H6T5B"
+                        height="0"
+                        width="0"
+                        style={{ display: 'none', visibility: 'hidden' }}
+                    />
+                </noscript>
+                <Script id="google-tag-manager" strategy="afterInteractive">
+                    {`
+                        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                        })(window,document,'script','dataLayer','GTM-TD4H6T5B');
+                    `}
+                </Script>
+                <I18nProvider locale={locale}>
+                    {children}
+                </I18nProvider>
+                <Script
+                    defer
+                    src='https://static.cloudflareinsights.com/beacon.min.js'
+                    data-cf-beacon='{"token": "247f4d1930d542d3b82ab2f814deeacd"}'
+                />
+            </body>
+        </html>
+    );
+}
