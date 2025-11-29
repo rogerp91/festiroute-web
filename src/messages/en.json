@@ -1,0 +1,174 @@
+{
+    "nav": {
+        "features": "Features",
+        "dazzy": "Dazzy AI",
+        "who_is_it_for": "Who is it for",
+        "view_app": "View App"
+    },
+    "hero": {
+        "new_companion": "New travel companion",
+        "powered_by": "Powered by Dazzy AI",
+        "title_prefix": "Your",
+        "title_highlight": "intelligent",
+        "title_suffix": "copilot for festivals.",
+        "subtitle": "Discover a new way to experience electronic music with personalized routes, real-time recommendations, and everything you need in one place.",
+        "waitlist": "Join the Waitlist",
+        "how_it_works": "Discover how it works"
+    },
+    "how_it_works": {
+        "title": "How FestiRoute Works",
+        "step1_title": "1. Plan Your Route",
+        "step1_desc": "Organize your trip, accommodation, and tickets easily before the music starts.",
+        "step2_title": "2. Get AI Recommendations",
+        "step2_desc": "Our AI Dazzy suggests the best schedules, routes, and places to eat based on your preferences.",
+        "step3_title": "3. Enjoy the Festival",
+        "step3_desc": "Live the experience to the fullest with real-time alerts and all the information in your pocket."
+    },
+    "features": {
+        "title": "Key Features",
+        "feature1_title": "Smart Itineraries",
+        "feature1_desc": "Create and optimize your artist schedule so you don't miss your favorite DJs.",
+        "feature2_title": "Music Discovery",
+        "feature2_desc": "Get suggestions for artists similar to your tastes playing at the festival.",
+        "feature3_title": "Real-Time Alerts",
+        "feature3_desc": "Notifications about schedule changes, surprise sets, and points of interest.",
+        "feature4_title": "Social Planning",
+        "feature4_desc": "Share your location and schedule with friends to meet up easily."
+    },
+    "dazzy": {
+        "title_prefix": "Powered by",
+        "title_highlight": "Dazzy AI",
+        "subtitle": "Dazzy accompanies you during your festival: helps you choose DJs, decide on outfits, and reminds you of what's important so you can just enjoy.",
+        "example1_title": "DJ Decider",
+        "example1_desc": "\"I'm between Anyma and Vintage Culture, which one should I go to today?\"",
+        "example2_title": "Outfit Decider",
+        "example2_desc": "\"It's going to get cold at night, should I bring a hoodie or light jacket?\"",
+        "example3_title": "Shuttle Reminder",
+        "example3_desc": "\"Remind me at 02:30 that I need to catch the shuttle back.\"",
+        "example4_title": "Rain Alert",
+        "example4_desc": "\"If it looks like rain tonight, let me know to bring a poncho or jacket.\"",
+        "footer_text": "Examples of how Dazzy can help you during your festival."
+    },
+    "who_is_it_for": {
+        "title": "Who is FestiRoute for",
+        "persona1_title": "The Seasoned Raver",
+        "persona1_desc": "Optimize every minute of your festival. Discover hidden gems in the lineup and navigate between stages like a pro.",
+        "persona2_title": "The First-Timer",
+        "persona2_desc": "Don't feel overwhelmed. FestiRoute is your personal guide to live an unforgettable and stress-free first experience.",
+        "persona3_title": "The Group Organizer",
+        "persona3_desc": "Keep the whole group together. Share plans, locations, and meeting points so no one gets lost."
+    },
+    "credibility": {
+        "badge": "Trust",
+        "title": "Made by people who live festivals",
+        "description": "FestiRoute is born from the real experience of traveling to electronic music festivals: organizing groups, managing cashless, not missing key DJs, and watching the budget.",
+        "point1_title": "Thought from the crowd, not from a desk",
+        "point1_desc": "FestiRoute is inspired by real trips to festivals like Tomorrowland, Ultra, and Lollapalooza, with all those details that don't appear on a flyer.",
+        "point2_title": "Obsession with the experience",
+        "point2_desc": "The app is designed as if it were for our own trips: from the checklist to how Dazzy talks to you when you have to decide quickly.",
+        "point3_title": "Evolves with the community",
+        "point3_desc": "The product will grow by listening to those who travel, organize, and live electronic music, not just with metrics on a spreadsheet."
+    },
+    "cta": {
+        "title_prefix": "Get ready for the",
+        "title_highlight": "journey",
+        "subtitle": "Join the waitlist and be the first to know when FestiRoute is available to transform your festival experience.",
+        "join_now": "Join Now",
+        "no_spam": "We won't spam you. Only important news from FestiRoute.",
+        "made_by": "Made by electronic music fans who also organize groups, plan trips, and don't want to miss a single drop."
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "developed_in": "Developed in",
+        "and": "and",
+        "terms": "Terms",
+        "privacy": "Privacy"
+    },
+    "terms_page": {
+        "title": "Terms and Conditions",
+        "subtitle": "FestiRoute - MVP",
+        "back_home": "Back to Home",
+        "sections": {
+            "1": {
+                "title": "1. Acceptance of Terms",
+                "content": "By using FestiRoute, you accept these Terms and Conditions. If you do not agree, you should not use the application or website."
+            },
+            "2": {
+                "title": "2. Service Description",
+                "content": "FestiRoute is a platform that helps plan trips and festival experiences. The MVP includes:",
+                "list": [
+                    "Basic trip management",
+                    "Tickets and lockers",
+                    "Group members",
+                    "Simple DJ Decider",
+                    "Transport and accommodation",
+                    "Stages (trip memories)"
+                ]
+            },
+            "3": {
+                "title": "3. Permitted Use",
+                "content": "Use is personal and non-commercial. You are not allowed to: modify the software, use FestiRoute for illegal activities, or attempt to access third-party information."
+            },
+            "4": {
+                "title": "4. Accounts and Security",
+                "content": "You are responsible for the security of your account and the information entered."
+            },
+            "5": {
+                "title": "5. User Content",
+                "content": "Photos and videos you upload are yours. FestiRoute only uses them to show your memories and organize your trip."
+            },
+            "6": {
+                "title": "6. Limitation of Liability",
+                "content": "FestiRoute is not responsible for schedule changes, external transport, event failures, or decisions based on the app."
+            },
+            "7": {
+                "title": "7. Availability",
+                "content": "The service may be updated or temporarily inactive for maintenance."
+            },
+            "8": {
+                "title": "8. Modifications",
+                "content": "We may modify these terms when necessary."
+            },
+            "9": {
+                "title": "9. Contact",
+                "content": "hello@festiRoute.app"
+            }
+        }
+    },
+    "privacy_page": {
+        "title": "Privacy Policy",
+        "subtitle": "FestiRoute - MVP",
+        "back_home": "Back to Home",
+        "sections": {
+            "1": {
+                "title": "1. Information We Collect",
+                "content": "We only collect information necessary for the MVP operation: name (if entered), trip data, tickets, lockers, members, and uploaded memories."
+            },
+            "2": {
+                "title": "2. How We Use Your Information",
+                "content": "We use data exclusively to organize your trip and improve the experience. We do not sell or share data."
+            },
+            "3": {
+                "title": "3. What We DO NOT Collect",
+                "content": "We do not ask for banking data, documents, or sensitive information. We do not track real-time location."
+            },
+            "4": {
+                "title": "4. Storage and Security",
+                "content": "Information is stored securely. No system is 100% infallible."
+            },
+            "5": {
+                "title": "5. User Rights",
+                "content": "You can request deletion or access to your data at any time by writing to:",
+                "email": "hello@festiRoute.app"
+            },
+            "6": {
+                "title": "6. Minors",
+                "content": "FestiRoute is directed to people over 16 years old."
+            },
+            "7": {
+                "title": "7. Changes",
+                "content": "We may update this policy if necessary."
+            }
+        }
+    }
+}
