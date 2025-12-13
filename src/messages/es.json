@@ -77,7 +77,13 @@
         "no_spam": "No vamos a spamearte. Solo noticias importantes de FestiRoute.",
         "made_by": "Hecha por fans de la música electrónica que también arman grupos, planifican viajes y no quieren perderse ni un drop."
     },
+    "about_holding": {
+        "title": "Aldayl & Co.",
+        "text": "FestiRoute es construida bajo Aldayl & Co., una casa de marcas silenciosa donde diseñamos productos con calma, intención y visión a largo plazo.",
+        "label": "House of crafted ventures."
+    },
     "footer": {
+        "brand_note": "FestiRoute™ es una marca de Aldayl & Co.",
         "rights": "Todos los derechos reservados.",
         "developed_in": "Desarrollado en",
         "and": "y",
@@ -172,6 +178,18 @@
                 "content": "Podemos actualizar esta política si es necesario."
             }
         }
+    },
+    "waitlist_modal": {
+        "title": "Únete a la lista de espera",
+        "subtitle": "Sé el primero en saber cuándo FestiRoute esté disponible",
+        "email_label": "Email",
+        "email_placeholder": "tu@email.com",
+        "submit_btn": "Unirme ahora",
+        "submitting": "Enviando...",
+        "no_spam": "No spam. Solo noticias importantes de FestiRoute.",
+        "success_title": "¡Bienvenido a FestiRoute!",
+        "success_msg": "Gracias por unirte a la lista de espera. Te notificaremos cuando estemos listos para lanzar.",
+        "close_btn": "Cerrar"
     },
     "metadata": {
         "title": "FestiRoute - Tu copiloto inteligente para festivales",

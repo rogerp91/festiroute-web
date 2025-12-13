@@ -54,15 +54,15 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
                             <span className="material-symbols-outlined text-primary text-4xl">check_circle</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-light">¡Bienvenido a FestiRoute!</h3>
+                        <h3 className="text-2xl font-bold text-light">{t('waitlist_modal.success_title')}</h3>
                         <p className="text-secondary-text">
-                            Gracias por unirte a la lista de espera. Te notificaremos cuando estemos listos para lanzar.
+                            {t('waitlist_modal.success_msg')}
                         </p>
                         <button
                             onClick={onClose}
                             className="mt-4 btn-primary flex h-12 min-w-[120px] cursor-pointer items-center justify-center rounded-lg bg-primary px-5 text-base font-bold text-dark transition-all hover:bg-primary/90 hover:scale-105"
                         >
-                            Cerrar
+                            {t('waitlist_modal.close_btn')}
                         </button>
                     </div>
                 </div>
@@ -82,16 +82,16 @@ const WaitlistModal = ({ isOpen, onClose }) => {
 
                 <div className="flex flex-col gap-6">
                     <div className="text-center">
-                        <h3 className="text-2xl font-bold text-light mb-2">Únete a la lista de espera</h3>
+                        <h3 className="text-2xl font-bold text-light mb-2">{t('waitlist_modal.title')}</h3>
                         <p className="text-secondary-text text-sm">
-                            Sé el primero en saber cuándo FestiRoute esté disponible
+                            {t('waitlist_modal.subtitle')}
                         </p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2">
                             <label htmlFor="email" className="text-sm font-medium text-light">
-                                Email
+                                {t('waitlist_modal.email_label')}
                             </label>
                             <input
                                 id="email"
@@ -99,7 +99,7 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                                 name="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="tu@email.com"
+                                placeholder={t('waitlist_modal.email_placeholder')}
                                 required
                                 className="h-12 rounded-lg border border-medium-dark bg-medium-dark/20 px-4 text-light placeholder:text-secondary-text/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all"
                             />
@@ -113,15 +113,15 @@ const WaitlistModal = ({ isOpen, onClose }) => {
                             {submitting ? (
                                 <span className="flex items-center gap-2">
                                     <span className="animate-spin material-symbols-outlined">progress_activity</span>
-                                    Enviando...
+                                    {t('waitlist_modal.submitting')}
                                 </span>
                             ) : (
-                                'Unirme ahora'
+                                t('waitlist_modal.submit_btn')
                             )}
                         </button>
 
                         <p className="text-xs text-secondary-text/60 text-center">
-                            No spam. Solo noticias importantes de FestiRoute.
+                            {t('waitlist_modal.no_spam')}
                         </p>
                     </form>
                 </div>

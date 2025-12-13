@@ -70,14 +70,20 @@
         "point3_desc": "The product will grow by listening to those who travel, organize, and live electronic music, not just with metrics on a spreadsheet."
     },
     "cta": {
-        "title_prefix": "Get ready for the",
-        "title_highlight": "journey",
-        "subtitle": "Join the waitlist and be the first to know when FestiRoute is available to transform your festival experience.",
-        "join_now": "Join Now",
-        "no_spam": "We won't spam you. Only important news from FestiRoute.",
-        "made_by": "Made by electronic music fans who also organize groups, plan trips, and don't want to miss a single drop."
+        "title_prefix": "Get ready to",
+        "title_highlight": "rave",
+        "subtitle": "Join the waitlist and be the first to know when FestiRoute is ready to transform your festival experience.",
+        "join_now": "Join Waitlist",
+        "no_spam": "No spam. Just important FestiRoute updates.",
+        "made_by": "Built by electronic music fans who also organize groups, plan trips, and don't want to miss a single drop."
+    },
+    "about_holding": {
+        "title": "Aldayl & Co.",
+        "text": "FestiRoute is built under Aldayl & Co., a quiet house of brands where we design products with calm, intention and long-term vision.",
+        "label": "House of crafted ventures."
     },
     "footer": {
+        "brand_note": "FestiRoute™ is an Aldayl & Co. brand.",
         "rights": "All rights reserved.",
         "developed_in": "Developed in",
         "and": "and",
@@ -172,6 +178,18 @@
                 "content": "We may update this policy if necessary."
             }
         }
+    },
+    "waitlist_modal": {
+        "title": "Join the waitlist",
+        "subtitle": "Be the first to know when FestiRoute is available",
+        "email_label": "Email",
+        "email_placeholder": "you@email.com",
+        "submit_btn": "Join Now",
+        "submitting": "Sending...",
+        "no_spam": "No spam. Just important FestiRoute updates.",
+        "success_title": "Welcome to FestiRoute!",
+        "success_msg": "Thanks for joining the waitlist. We'll notify you when we're ready to launch.",
+        "close_btn": "Close"
     },
     "metadata": {
         "title": "FestiRoute - Your Intelligent Festival Copilot",

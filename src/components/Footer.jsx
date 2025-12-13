@@ -15,15 +15,20 @@ const Footer = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
 
         {/* Brand & Copyright - Compact Block */}
-        <div className="flex flex-col items-center md:items-start gap-1">
+        <div className="flex flex-col items-center md:items-start gap-3">
           <Link href={`/${locale}`} className="inline-block hover:opacity-80 transition-opacity">
-            <span className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-light tracking-tight">
+            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-light tracking-tighter">
               FestiRoute
             </span>
           </Link>
-          <p className="text-[10px] uppercase tracking-wider text-secondary-text/40 font-medium">
-            © 2025 Aldayl & Co.
-          </p>
+          <div className="flex flex-col gap-1 text-center md:text-left">
+            <p className="text-[11px] text-zinc-500 font-medium tracking-wide">
+              {t('footer.brand_note')}
+            </p>
+            <p className="text-[11px] text-zinc-600">
+              © 2025 FestiRoute — {t('footer.rights')}
+            </p>
+          </div>
         </div>
 
         {/* Navigation & Links - Horizontal List */}
