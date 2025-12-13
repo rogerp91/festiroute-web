@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from '@/lib/i18n';
 import { motion } from 'framer-motion';
 import WaitlistModal from './WaitlistModal';
+import StoreButtons from './StoreButtons';
+
+
 
 const Hero = () => {
     const t = useTranslations();
@@ -60,8 +63,13 @@ const Hero = () => {
     return (
         <>
             <section ref={heroRef} className="hero-section relative flex min-h-[calc(100vh-65px)] flex-col items-center justify-center py-20 text-center overflow-hidden">
-                {/* Hero Background with Parallax */}
-                <div className="hero-background absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1544383835-bda2bc66a22d?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-30"></div>
+                {/* Hero Background with Next.js Image for SEO */}
+                {/* Hero Background - Restored CSS for stability, using aria-label for SEO */}
+                <div
+                    className="hero-background absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1544383835-bda2bc66a22d?q=80&w=2940&auto=format&fit=crop')] bg-cover bg-center opacity-30"
+                    role="img"
+                    aria-label="Crowd enjoying an electronic music festival in Europe - Tomorrowland style"
+                ></div>
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-dark via-dark/70 to-transparent"></div>
 
                 {/* Animated Glow Effects */}
@@ -123,6 +131,14 @@ const Hero = () => {
                         <button className="flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-medium-dark bg-dark/50 backdrop-blur-sm px-5 text-base font-bold leading-normal tracking-wide text-light transition-all hover:bg-medium-dark hover:border-primary/30">
                             <span className="truncate">{t('hero.how_it_works')}</span>
                         </button>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                    >
+                        <StoreButtons />
                     </motion.div>
                 </div>
             </section>

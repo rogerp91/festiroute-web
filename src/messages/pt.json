@@ -82,7 +82,9 @@
         "developed_in": "Desenvolvido em",
         "and": "e",
         "terms": "Termos",
-        "privacy": "Privacidade"
+        "privacy": "Privacidade",
+        "product": "Produto",
+        "legal": "Legal"
     },
     "terms_page": {
         "title": "Termos e Condições",
@@ -131,7 +133,7 @@
             },
             "9": {
                 "title": "9. Contato",
-                "content": "hello@festiRoute.app"
+                "content": "hello@festiroute.com"
             }
         }
     },
@@ -159,7 +161,7 @@
             "5": {
                 "title": "5. Direitos do Usuário",
                 "content": "Você pode solicitar a exclusão ou acesso aos seus dados a qualquer momento escrevendo para:",
-                "email": "hello@festiRoute.app"
+                "email": "hello@festiroute.com"
             },
             "6": {
                 "title": "6. Menores",
@@ -170,5 +172,10 @@
                 "content": "Podemos atualizar esta política se necessário."
             }
         }
+    },
+    "metadata": {
+        "title": "FestiRoute - Seu copiloto inteligente para festivais",
+        "description": "Descubra uma nova forma de viver a música eletrônica com rotas personalizadas, recomendações em tempo real e tudo o que você precisa em um só lugar.",
+        "keywords": "festivais, música eletrônica, rotas, IA, Dazzy, planejamento, eventos, shows, festival guide, EDM, techno, house, rave, itinerário, lineup, Tomorrowland, Bélgica, ADE, Amsterdam Dance Event, Holanda, Creamfields, Reino Unido, Glastonbury, festivais Europa"
     }
 }

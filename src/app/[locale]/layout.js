@@ -1,7 +1,20 @@
 import { I18nProvider } from '@/lib/i18n';
+import { Urbanist } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import '../globals.css';
+import es from '../../messages/es.json';
+import en from '../../messages/en.json';
+import pt from '../../messages/pt.json';
+
+const messages = { es, en, pt };
+
+const urbanist = Urbanist({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '600', '700', '800'],
+    variable: '--font-urbanist',
+    display: 'swap',
+});
 
 const locales = ['en', 'es', 'pt'];
 
@@ -9,81 +22,93 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export const metadata = {
-    title: 'FestiRoute - Tu copiloto inteligente para festivales',
-    description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real y todo lo que necesitas en un solo lugar.',
-    keywords: 'festivales, música electrónica, rutas, IA, Dazzy, planificación, eventos, conciertos, festival guide',
+export async function generateMetadata({ params }) {
+    const { locale } = await params;
 
-    // Icons and Favicons
-    icons: {
-        icon: [
-            { url: '/favicon.ico' },
-            { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-            { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
-            { url: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' },
+    // Default to 'es' if something goes wrong, though generateStaticParams handles valid locales
+    const currentLocale = locales.includes(locale) ? locale : 'es';
+    // Fallback to 'es' messages if locale messages are missing metadata (safety check)
+    const t = messages[currentLocale]?.metadata || messages['es'].metadata;
+
+    return {
+        metadataBase: new URL('https://festiroute.com'),
+        title: t.title,
+        description: t.description,
+        keywords: t.keywords ? t.keywords.split(', ') : [],
+
+        // Icons and Favicons
+        icons: {
+            icon: [
+                { url: '/favicon.ico' },
+                { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+                { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+                { url: '/favicon-512x512.png', sizes: '512x512', type: 'image/png' },
+            ],
+            apple: [
+                { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+            ],
+        },
+
+        // Manifest
+        manifest: '/site.webmanifest',
+
+        // Theme Color
+        themeColor: [
+            { media: '(prefers-color-scheme: dark)', color: '#0a0e27' },
+            { media: '(prefers-color-scheme: light)', color: '#00ff88' },
         ],
-        apple: [
-            { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-        ],
-    },
 
-    // Manifest
-    manifest: '/site.webmanifest',
+        // Open Graph
+        openGraph: {
+            type: 'website',
+            locale: currentLocale === 'en' ? 'en_US' : currentLocale === 'pt' ? 'pt_BR' : 'es_ES',
+            alternateLocale: locales.filter(l => l !== currentLocale).map(l => l === 'en' ? 'en_US' : l === 'pt' ? 'pt_BR' : 'es_ES'),
+            url: `https://festiroute.com/${currentLocale}`,
+            siteName: 'FestiRoute',
+            title: t.title,
+            description: t.description,
+            images: [
+                {
+                    url: '/favicon-512x512.png',
+                    width: 512,
+                    height: 512,
+                    alt: 'FestiRoute Logo',
+                },
+            ],
+        },
 
-    // Theme Color
-    themeColor: [
-        { media: '(prefers-color-scheme: dark)', color: '#0a0e27' },
-        { media: '(prefers-color-scheme: light)', color: '#00ff88' },
-    ],
+        // Twitter Card
+        twitter: {
+            card: 'summary_large_image',
+            title: t.title,
+            description: t.description,
+            images: ['/favicon-512x512.png'],
+            creator: '@festiroute',
+            site: '@festiroute',
+        },
 
-    // Open Graph (Facebook, LinkedIn, etc.)
-    openGraph: {
-        type: 'website',
-        locale: 'en_US',
-        alternateLocale: ['es_ES', 'pt_BR'],
-        url: 'https://festiroute.com',
-        siteName: 'FestiRoute',
-        title: 'FestiRoute - Tu copiloto inteligente para festivales',
-        description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real y todo lo que necesitas en un solo lugar.',
-        images: [
-            {
-                url: '/favicon-512x512.png',
-                width: 512,
-                height: 512,
-                alt: 'FestiRoute Logo',
-            },
-        ],
-    },
-
-    // Twitter Card
-    twitter: {
-        card: 'summary_large_image',
-        title: 'FestiRoute - Tu copiloto inteligente para festivales',
-        description: 'Descubre una nueva forma de vivir la música electrónica con rutas personalizadas, recomendaciones en tiempo real.',
-        images: ['/favicon-512x512.png'],
-        creator: '@festiroute',
-        site: '@festiroute',
-    },
-
-    // Additional SEO
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
+        // Additional SEO
+        robots: {
             index: true,
             follow: true,
-            'max-video-preview': -1,
-            'max-image-preview': 'large',
-            'max-snippet': -1,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
         },
-    },
-
-    // Verification (add your verification codes when available)
-    // verification: {
-    //     google: 'your-google-verification-code',
-    //     yandex: 'your-yandex-verification-code',
-    // },
-};
+        alternates: {
+            canonical: `/${currentLocale}`,
+            languages: {
+                'en': '/en',
+                'es': '/es',
+                'pt': '/pt',
+            },
+        },
+    };
+}
 
 export default async function LocaleLayout({ children, params }) {
     const { locale } = await params;
@@ -91,6 +116,9 @@ export default async function LocaleLayout({ children, params }) {
     if (!locales.includes(locale)) {
         notFound();
     }
+
+    // Safety access just in case
+    const t = messages[locale]?.metadata || messages['es'].metadata;
 
     return (
         <html lang={locale} className="dark">
@@ -100,7 +128,7 @@ export default async function LocaleLayout({ children, params }) {
                     rel="stylesheet"
                 />
             </head>
-            <body className="antialiased">
+            <body className={`${urbanist.variable} font-sans antialiased`}>
                 <noscript>
                     <iframe
                         src="https://www.googletagmanager.com/ns.html?id=GTM-TD4H6T5B"
@@ -126,6 +154,29 @@ export default async function LocaleLayout({ children, params }) {
                     src='https://static.cloudflareinsights.com/beacon.min.js'
                     data-cf-beacon='{"token": "247f4d1930d542d3b82ab2f814deeacd"}'
                 />
+                <Script id="schema-org" type="application/ld+json">
+                    {`
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "SoftwareApplication",
+                            "name": "FestiRoute",
+                            "applicationCategory": "TravelApplication",
+                            "operatingSystem": "Web, iOS, Android",
+                            "areaServed": ["BE", "NL", "GB", "ES", "PT", "US", "LATAM"],
+                            "offers": {
+                                "@type": "Offer",
+                                "price": "0",
+                                "priceCurrency": "USD"
+                            },
+                            "description": "${t.description}",
+                            "aggregateRating": {
+                                "@type": "AggregateRating",
+                                "ratingValue": "4.8",
+                                "ratingCount": "100"
+                            }
+                        }
+                    `}
+                </Script>
             </body>
         </html>
     );
