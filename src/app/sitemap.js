@@ -1,6 +1,8 @@
 const baseUrl = 'https://festiroute.com';
 const locales = ['en', 'es', 'pt'];
 
+export const dynamic = 'force-static';
+
 export default function sitemap() {
     const routes = ['', '/terms', '/privacy'];
 
